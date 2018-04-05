@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import LoginBox from './Login.js'
 import logo from './logo.svg';
 import './App.css';
+
 
 class App extends Component {
   render() {
@@ -13,9 +16,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <LoginBox/>
       </div>
     );
   }
 }
 
+//ReactDOM.render(<Box />, document.getElementById('form'));
 export default App;
