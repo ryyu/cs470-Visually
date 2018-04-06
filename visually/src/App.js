@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import LoginBox from './Login.js'
 import logo from './logo.svg';
 import './App.css';
-import {HeaderBar} from './headerBar.js'
+import {HeaderBar} from './headerBar.js';
+import {SearchBar} from './searchBar.js';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <LoginBox/>
+		<SearchBar/>
       </div>
     );
   }
