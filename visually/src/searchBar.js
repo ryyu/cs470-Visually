@@ -61,7 +61,7 @@ export class SearchBar extends React.Component {
 		for (var i = 0; i < jsonObject.hashtags.length; i++) {
 			usableData.push({
 				pic: hashtagIcon, 
-				name: jsonObject.hashtags[i].hashtag.name,
+				name: "#" + jsonObject.hashtags[i].hashtag.name,
 				id: jsonObject.hashtags[i].hashtag.id,
 				position: jsonObject.hashtags[i].position,
 				type: "hashtag"
@@ -105,6 +105,22 @@ export class SearchBar extends React.Component {
 	}
 	
 	
+	/* 	Returns the correct URL to get the results from Instagram
+		based on the given string.
+	*/
+	buildSourceUrl = (searchString) => {
+		var url = "https://www.instagram.com/web/search/topsearch/?context=blended&query=";
+		
+		if (searchString.charAt(0) == "#") {
+			url += "%23" + searchString.substring(1);
+		} else {
+			url += searchString;
+		}
+		
+		return url;
+	}
+	
+	
 	
 	/*	The method will query Instagram for search results based on
 		this.state.searchString. The id, name, and picture of each user
@@ -115,7 +131,7 @@ export class SearchBar extends React.Component {
 		event.preventDefault();
 		var results = {};
 		var request = new XMLHttpRequest();
-		var url = "https://www.instagram.com/web/search/topsearch/?context=blended&query=" + this.state.searchString;
+		var url = this.buildSourceUrl(this.state.searchString);
 		
 		request.open("GET", url, true);
 		request.send();
