@@ -1,5 +1,7 @@
 import * as React from 'react';
 import './stylesheets/searchBar.css';
+import locationIcon from './assets/locationIcon.svg';
+import hashtagIcon from './assets/hashtagIcon.svg';
 
 class SearchResult extends React.Component {
 	render() {
@@ -17,6 +19,13 @@ class SearchResult extends React.Component {
 
 
 export class SearchBar extends React.Component {
+	/*	State properties:
+			showResults		When true, the search results box will be rendered.
+							When false, it will remain invisible.
+			infoToDisplay	An array of all of the objects that store the info
+							to be displayed in each SearchResult.
+			searchString	What the user has typed into the search bar
+	*/
 	constructor(props){
 		super(props);
 		this.state = {	showResults: false, 
@@ -26,29 +35,64 @@ export class SearchBar extends React.Component {
 	}
 	
 	
-	/*	Returns an array of objects that contain profile picture links
-		and user names. To get values from this array, refer to the
-		objects with varName[idx].name
+	/*	Returns an array of objects with the following properties:
+			pic 		The picture to be displayed with the result
+			name 		The name that will be displayed in the results box
+			id 			The ID of the result
+			position	The order that the results are meant to be displayed in
+			type		"user", "hashtag", or "location"
+		The array will be sorted so that objects with the lowest position
+		property are at the beginning and higher positions are at the end.
 	*/
-	getPicsAndNames = (jsonObject) => {
-		var picsAndNames = [];
+	getUsableData = (jsonObject) => {
+		var usableData = [];
+		
+		//Go through all of the users
 		for (var i = 0; i < jsonObject.users.length; i++) {
-			picsAndNames.push({
+			usableData.push({
 				pic: jsonObject.users[i].user.profile_pic_url, 
 				name: jsonObject.users[i].user.username,
-				id: jsonObject.users[i].user.pk
+				id: jsonObject.users[i].user.pk,
+				position: jsonObject.users[i].position,
+				type: "user"
 			});
 		}
-		console.log(picsAndNames);
-		return picsAndNames;
+		//Go through all of the hashtags
+		for (var i = 0; i < jsonObject.hashtags.length; i++) {
+			usableData.push({
+				pic: hashtagIcon, 
+				name: jsonObject.hashtags[i].hashtag.name,
+				id: jsonObject.hashtags[i].hashtag.id,
+				position: jsonObject.hashtags[i].position,
+				type: "hashtag"
+			});
+		}
+		//Go through all of the places
+		for (var i = 0; i < jsonObject.places.length; i++) {
+			usableData.push({
+				pic: locationIcon, 
+				name: jsonObject.places[i].place.title,
+				id: jsonObject.places[i].place.pk,
+				position: jsonObject.places[i].position,
+				type: "place"
+			});
+		}
+		
+		this.sortByPosition(usableData)
+		console.log(usableData);
+		return usableData;
 	}
 	
 	
-	
-	handleChange = event => {
-		const target = event.target;
-		const name = target.name
-		this.setState({[name]: event.target.value});
+	/*	Given an array of objects that all have a "position" property, the
+		array is modified to be sorted so that objects with the lowest
+		position value are at the beginning and ones with the highest
+		position value are at the end. 
+	*/
+	sortByPosition = (arrayOfObjects) => {
+		arrayOfObjects.sort(function( obj1, obj2){
+			return obj1.position - obj2.position;
+		})
 	}
 	
 	
@@ -83,13 +127,19 @@ export class SearchBar extends React.Component {
 				this.setState(
 					{
 						showResults:true, 
-						infoToDisplay: this.getPicsAndNames(results)
+						infoToDisplay: this.getUsableData(results)
 					}
 				);
 			} 
 		}
 	}
 	
+	
+	handleChange = event => {
+		const target = event.target;
+		const name = target.name
+		this.setState({[name]: event.target.value});
+	}
 	
 	
 	/*	Given an array of objects that contain profilePic and username
@@ -109,7 +159,10 @@ export class SearchBar extends React.Component {
 	}
 	
 	
-	
+	/*	Returns the HTML for all of the SearchResults inside of
+		a div. If state.infoToDisplay is empty, there will be
+		no SearchResults produced.
+	*/
 	renderResults = () => {
 		if (this.state.showResults == true) {
 			return (
