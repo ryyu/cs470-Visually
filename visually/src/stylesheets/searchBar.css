@@ -1,26 +1,45 @@
-.searchBarContainer{
-	width: 310px;
-	background-color: white;
+.searchBarWidget{
+	width: 302px;
 }
 
-.mainSearchBar{
+
+.searchBar{
+	float: left;
+	border: 1px solid black;
+	border-radius: 3px;
+	color: yellow;
+	height: 44px;
 	width: 300px;
-	height: 30px;
-	font-size: 16px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	padding: 0px;
 	
+}
+
+.searchBar .textArea{
+	border: 0px solid;
+	margin: 0px;
+	padding: 0px;
+	height: 44px;
+	width: 250px;
+	float: left;
+	font-size: 14px;
+}
+
+.searchBar .textArea:focus {
+	outline: none;
 }
 
 input.searchBtn{
     background:url(../assets/searchBlack.svg);
     background-repeat: no-repeat;
-    width:30px;
-	height:30px;
-	border: 0;
-	margin-left: -30px;
+	background-size: 24px;
+	background-position: center;
+    width:44px;
+	height: 44px;
+	margin: 0px;
+	padding: 0px;
+	border: 0px solid;
 	cursor: pointer;
+	float: left;
 }
 
 .searchResultContents{

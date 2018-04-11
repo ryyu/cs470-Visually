@@ -199,18 +199,20 @@ export class SearchBar extends React.Component {
 		console.log("Rerendering everything");
 		var initialText="Search for a user, location, or hashtag";
 		return (
-			<div class="searchBarContainer">
+			<div class="searchBarWidget">
 				<form onSubmit={(event) => this.handleSearch(event)}>
-					<input 
-						class="mainSearchBar"
-						type="text"
-						placeholder={initialText}
-						name="searchString"
-						onChange={this.handleChange}
-						autocomplete="off"
-					/>
+					<div class="searchBar">
+						<input 
+							class="textArea"
+							type="text"
+							placeholder={initialText}
+							name="searchString"
+							onChange={this.handleChange}
+							autocomplete="off"
+						/>
 
-					<input class="searchBtn" type="submit" value="" ></input>
+						<input class="searchBtn" type="submit" value="" ></input>
+					</div>
 				</form>
 				{this.renderResults()}
 			</div>
@@ -218,3 +220,5 @@ export class SearchBar extends React.Component {
 		)
   }
 }
+
+
