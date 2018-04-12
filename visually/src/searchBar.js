@@ -2,16 +2,19 @@ import * as React from 'react';
 import './stylesheets/searchBar.css';
 import locationIcon from './assets/locationIcon.svg';
 import hashtagIcon from './assets/hashtagIcon.svg';
+import {NavLink} from 'react-router-dom';
 
 class SearchResult extends React.Component {
 	render() {
 		return(
+			<NavLink to={"/graph?type=" + this.props.type + "&id=" + this.props.id}>
 			<div class="searchResult">
 				<img src={this.props.profilePic} class="resultPic"/>
 				<div class="resultTextArea">
 				{this.props.username}
 				</div>
 			</div>
+			</NavLink>
 		)
 	}
 }
@@ -72,7 +75,7 @@ export class SearchBar extends React.Component {
 			usableData.push({
 				pic: locationIcon, 
 				name: jsonObject.places[i].place.title,
-				id: jsonObject.places[i].place.pk,
+				id: jsonObject.places[i].place.location.pk,
 				position: jsonObject.places[i].position,
 				type: "place"
 			});
@@ -169,6 +172,7 @@ export class SearchBar extends React.Component {
 											profilePic={resultObject.pic}
 											username={resultObject.name}
 											id={resultObject.id}
+											type={resultObject.type}
 										/>
 							});
 		return <div>{listOfResults}</div>;
