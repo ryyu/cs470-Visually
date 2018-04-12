@@ -190,7 +190,7 @@ export class SearchBar extends React.Component {
 		no SearchResults produced.
 	*/
 	renderResults = () => {
-		if (this.state.showResults == true) {
+		if (this.state.showResults == true && this.state.searchString != "") {
 			return (
 				<div class="searchResultContents">
 				{this.searchResults(this.state.infoToDisplay)}
