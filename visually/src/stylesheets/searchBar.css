@@ -1,5 +1,7 @@
 .searchBarWidget{
 	width: 302px;
+	display: inline-block;
+	margin: 0px;
 }
 
 
@@ -61,6 +63,7 @@ input.searchBtn{
 	padding-bottom: 5px;
 	border-bottom: 1px solid #e0e0e0;
 	overflow: hidden;
+	color: black;
 }
 
 .searchResult:hover{

@@ -1,4 +1,9 @@
-#searchBarContainer{
-margin: 0 auto;
-display: inline-block;
+#searchArea = {
+	padding-top: 50px;
+	display: inline-block;
+	overflow: hidden;
+	width: 500px;
+
+	margin-left: auto;
+	margin-right: auto;
 }
