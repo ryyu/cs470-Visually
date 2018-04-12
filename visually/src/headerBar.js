@@ -27,7 +27,7 @@ export class HeaderBar extends React.Component {
 				<HamburgerMenu/>
 			</div>
 			<div class="logoArea">
-				<img src={logo} height="50px"/>
+				<span class="headerMainText">Visually</span>
 			</div>
 		</div>
 	)

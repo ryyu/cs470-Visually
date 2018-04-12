@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {Route, NavLink, BrowserRouter} from 'react-router-dom';
 import './App.css';
+import './stylesheets/styles.css';
 import {HeaderBar} from './headerBar.js';
 
 import {Search} from './pages/search.js';
@@ -13,7 +14,7 @@ class App extends Component {
 		<BrowserRouter>
 			<div className="App">
 				<HeaderBar></HeaderBar>
-				<div className = "content">
+				<div className="content">
 					<Route exact path="/" component={Login}/>
 					<Route exact path="/login" component={Login}/>
 					<Route exact path="/search" component={Search}/>
