@@ -11,7 +11,8 @@ class SearchResult extends React.Component {
 			<div class="searchResult">
 				<img src={this.props.profilePic} class="resultPic"/>
 				<div class="resultTextArea">
-				{this.props.username}
+					<span class="mainText">{this.props.mainText} </span>
+					<span class="secondText"> {this.props.secondText}</span>
 				</div>
 			</div>
 			</NavLink>
@@ -57,8 +58,10 @@ export class SearchBar extends React.Component {
 				name: jsonObject.users[i].user.username,
 				id: jsonObject.users[i].user.pk,
 				position: jsonObject.users[i].position,
-				type: "user"
+				type: "user",
+				secondText: jsonObject.users[i].user.byline
 			});
+			console.log(jsonObject.users[i].user.byline);
 		}
 		//Go through all of the hashtags
 		for (var i = 0; i < jsonObject.hashtags.length; i++) {
@@ -67,7 +70,8 @@ export class SearchBar extends React.Component {
 				name: "#" + jsonObject.hashtags[i].hashtag.name,
 				id: jsonObject.hashtags[i].hashtag.id,
 				position: jsonObject.hashtags[i].position,
-				type: "hashtag"
+				type: "hashtag",
+				secondText: jsonObject.hashtags[i].hashtag.media_count + " posts"
 			});
 		}
 		//Go through all of the places
@@ -77,7 +81,8 @@ export class SearchBar extends React.Component {
 				name: jsonObject.places[i].place.title,
 				id: jsonObject.places[i].place.location.pk,
 				position: jsonObject.places[i].position,
-				type: "place"
+				type: "place",
+				secondText: jsonObject.places[i].place.subtitle
 			});
 		}
 		
@@ -170,7 +175,8 @@ export class SearchBar extends React.Component {
 		var listOfResults = picsAndNames.map(function(resultObject) {
 								return <SearchResult
 											profilePic={resultObject.pic}
-											username={resultObject.name}
+											mainText={resultObject.name}
+											secondText={resultObject.secondText}
 											id={resultObject.id}
 											type={resultObject.type}
 										/>
