@@ -1,9 +1,19 @@
-#searchArea = {
-	padding-top: 50px;
+.titleText{
+	font-size: 64px;
+	display: block;
+	color: #2592BF;
+}
+
+.searchArea{
+	margin-top: 20vh;
 	display: inline-block;
 	overflow: hidden;
-	width: 500px;
-
 	margin-left: auto;
 	margin-right: auto;
+	width: 700px;
+}
+
+.tipText{
+	color: #707173;
+
 }
