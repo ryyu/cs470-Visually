@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './stylesheets/headerBar.css';
-import logo from './assets/logo.png';
+import logo from './assets/logo.svg';
 import {Route, NavLink, HashRouter} from 'react-router-dom';
 
 class HamburgerMenu extends React.Component{
@@ -27,7 +27,10 @@ export class HeaderBar extends React.Component {
 				<HamburgerMenu/>
 			</div>
 			<div class="logoArea">
-				<span class="headerMainText">Visually</span>
+				<img src={logo} height="50px"></img>
+			</div>
+			<div class="catchPhraseArea">
+				Some sort of catchy phrase can go here
 			</div>
 		</div>
 	)
