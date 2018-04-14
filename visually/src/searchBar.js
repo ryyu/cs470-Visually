@@ -53,15 +53,17 @@ export class SearchBar extends React.Component {
 		
 		//Go through all of the users
 		for (var i = 0; i < jsonObject.users.length; i++) {
-			usableData.push({
-				pic: jsonObject.users[i].user.profile_pic_url, 
-				name: jsonObject.users[i].user.username,
-				id: jsonObject.users[i].user.pk,
-				position: jsonObject.users[i].position,
-				type: "user",
-				secondText: jsonObject.users[i].user.byline
-			});
-			console.log(jsonObject.users[i].user.byline);
+			if(!jsonObject.users[i].user.is_private){
+				usableData.push({
+					pic: jsonObject.users[i].user.profile_pic_url, 
+					name: jsonObject.users[i].user.username,
+					id: jsonObject.users[i].user.pk,
+					position: jsonObject.users[i].position,
+					type: "user",
+					secondText: jsonObject.users[i].user.byline
+				});
+				console.log(jsonObject.users[i].user.byline);
+			}
 		}
 		//Go through all of the hashtags
 		for (var i = 0; i < jsonObject.hashtags.length; i++) {
