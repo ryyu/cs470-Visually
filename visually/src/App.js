@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import LoginBox from './Login.js'
-import logo from './logo.svg';
+import {Route, NavLink, BrowserRouter} from 'react-router-dom';
 import './App.css';
+import './stylesheets/styles.css';
 import {HeaderBar} from './headerBar.js';
-import {SearchBar} from './searchBar.js';
+
+import {Search} from './pages/search.js';
+import {Login} from './pages/login.js';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-		<HeaderBar></HeaderBar>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <LoginBox/>
-		<SearchBar/>
-      </div>
+		<BrowserRouter>
+			<div className="App">
+				<HeaderBar></HeaderBar>
+				<div className="content">
+					<Route exact path="/" component={Login}/>
+					<Route exact path="/login" component={Login}/>
+					<Route exact path="/search" component={Search}/>
+					{/* Any new pages that can be linked to should go in here*/}
+				</div>
+			</div>
+	  	</BrowserRouter>
     );
   }
 }

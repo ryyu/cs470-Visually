@@ -2,16 +2,20 @@ import * as React from 'react';
 import './stylesheets/searchBar.css';
 import locationIcon from './assets/locationIcon.svg';
 import hashtagIcon from './assets/hashtagIcon.svg';
+import {NavLink} from 'react-router-dom';
 
 class SearchResult extends React.Component {
 	render() {
 		return(
+			<NavLink to={"/graph?type=" + this.props.type + "&id=" + this.props.id}>
 			<div class="searchResult">
 				<img src={this.props.profilePic} class="resultPic"/>
 				<div class="resultTextArea">
-				{this.props.username}
+					<span class="mainText">{this.props.mainText} </span>
+					<span class="secondText"> {this.props.secondText}</span>
 				</div>
 			</div>
+			</NavLink>
 		)
 	}
 }
@@ -49,13 +53,17 @@ export class SearchBar extends React.Component {
 		
 		//Go through all of the users
 		for (var i = 0; i < jsonObject.users.length; i++) {
-			usableData.push({
-				pic: jsonObject.users[i].user.profile_pic_url, 
-				name: jsonObject.users[i].user.username,
-				id: jsonObject.users[i].user.pk,
-				position: jsonObject.users[i].position,
-				type: "user"
-			});
+			if(!jsonObject.users[i].user.is_private){
+				usableData.push({
+					pic: jsonObject.users[i].user.profile_pic_url, 
+					name: jsonObject.users[i].user.username,
+					id: jsonObject.users[i].user.pk,
+					position: jsonObject.users[i].position,
+					type: "user",
+					secondText: jsonObject.users[i].user.byline
+				});
+				console.log(jsonObject.users[i].user.byline);
+			}
 		}
 		//Go through all of the hashtags
 		for (var i = 0; i < jsonObject.hashtags.length; i++) {
@@ -64,7 +72,8 @@ export class SearchBar extends React.Component {
 				name: "#" + jsonObject.hashtags[i].hashtag.name,
 				id: jsonObject.hashtags[i].hashtag.id,
 				position: jsonObject.hashtags[i].position,
-				type: "hashtag"
+				type: "hashtag",
+				secondText: jsonObject.hashtags[i].hashtag.media_count + " posts"
 			});
 		}
 		//Go through all of the places
@@ -72,9 +81,10 @@ export class SearchBar extends React.Component {
 			usableData.push({
 				pic: locationIcon, 
 				name: jsonObject.places[i].place.title,
-				id: jsonObject.places[i].place.pk,
+				id: jsonObject.places[i].place.location.pk,
 				position: jsonObject.places[i].position,
-				type: "place"
+				type: "place",
+				secondText: jsonObject.places[i].place.subtitle
 			});
 		}
 		
@@ -167,8 +177,10 @@ export class SearchBar extends React.Component {
 		var listOfResults = picsAndNames.map(function(resultObject) {
 								return <SearchResult
 											profilePic={resultObject.pic}
-											username={resultObject.name}
+											mainText={resultObject.name}
+											secondText={resultObject.secondText}
 											id={resultObject.id}
+											type={resultObject.type}
 										/>
 							});
 		return <div>{listOfResults}</div>;
@@ -180,7 +192,7 @@ export class SearchBar extends React.Component {
 		no SearchResults produced.
 	*/
 	renderResults = () => {
-		if (this.state.showResults == true) {
+		if (this.state.showResults == true && this.state.searchString != "") {
 			return (
 				<div class="searchResultContents">
 				{this.searchResults(this.state.infoToDisplay)}
@@ -199,18 +211,20 @@ export class SearchBar extends React.Component {
 		console.log("Rerendering everything");
 		var initialText="Search for a user, location, or hashtag";
 		return (
-			<div class="searchBarContainer">
+			<div class="searchBarWidget">
 				<form onSubmit={(event) => this.handleSearch(event)}>
-					<input 
-						class="mainSearchBar"
-						type="text"
-						placeholder={initialText}
-						name="searchString"
-						onChange={this.handleChange}
-						autocomplete="off"
-					/>
+					<div class="searchBar">
+						<input 
+							class="textArea"
+							type="text"
+							placeholder={initialText}
+							name="searchString"
+							onChange={this.handleChange}
+							autocomplete="off"
+						/>
 
-					<input class="searchBtn" type="submit" value="" ></input>
+						<input class="searchBtn" type="submit" value="" ></input>
+					</div>
 				</form>
 				{this.renderResults()}
 			</div>
@@ -218,3 +232,5 @@ export class SearchBar extends React.Component {
 		)
   }
 }
+
+
