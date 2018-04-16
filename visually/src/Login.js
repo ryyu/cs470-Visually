@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import './stylesheets/login.css';
 
 
 class LoginBox extends Component {
@@ -46,19 +46,17 @@ class LoginForms extends Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Username:
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
-        </label>
-        <br/>
-        <label>
-          Password:
-          <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
-        </label>
-        <br/>
-        <input type="submit" value="Submit" />
-      </form>
+      <div class="login-form">
+        <form class="form" onSubmit={this.handleSubmit}>
+          <h1>Welcome</h1>
+          <input placeholder="Username" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
+            <br/>
+          <input placeholder="Password" type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+            <br/>
+          <input type="submit" value="Submit" />
+          <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+      </div>
     );
   }
 }

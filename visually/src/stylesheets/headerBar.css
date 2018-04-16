@@ -3,13 +3,13 @@
 	height: 50px;
 	padding: 5px;
 	background-color: #0C3140;
-	
+
 	-webkit-box-shadow: 0px 4px 2px 0px rgba(0,0,0,0.26);
 	-moz-box-shadow: 0px 4px 2px 0px rgba(0,0,0,0.26);
 	box-shadow: 0px 4px 2px 0px rgba(0,0,0,0.26);
 	display: block;
 	margin: 0px;
-	position: fixed;
+	
 
 }
 
@@ -42,7 +42,7 @@
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-	
+
 }
 
 .hamburgerContent a {
