@@ -31,3 +31,13 @@ exports.newUser = function(params, callback) {
             callback(err, result);
         });
 };
+
+exports.checkCredentials = function(params, callback) {
+    var query = 'SELECT * FROM Users where user_name = ? AND user_password = ?' ;
+    var queryData = [params.user_name, params.user_password]
+
+    connection.query(query, queryData, function (err, result){
+        callback(err, result);
+    });
+
+};
