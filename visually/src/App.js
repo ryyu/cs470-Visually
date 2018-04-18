@@ -8,6 +8,8 @@ import {HeaderBar} from './headerBar.js';
 import {Search} from './pages/search.js';
 import {Login} from './pages/login.js';
 
+import {Graph} from './Graph.js';
+
 class App extends Component {
   render() {
     return (
@@ -19,6 +21,7 @@ class App extends Component {
 					<Route exact path="/login" component={Login}/>
 					<Route exact path="/search" component={Search}/>
 					{/* Any new pages that can be linked to should go in here*/}
+          <Route exact path="/Graphs" component={Graph}/>
 				</div>
 			</div>
 	  	</BrowserRouter>
