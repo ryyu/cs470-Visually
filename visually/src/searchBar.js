@@ -7,7 +7,8 @@ import {NavLink} from 'react-router-dom';
 class SearchResult extends React.Component {
 	render() {
 		return(
-			<NavLink to={"/graph?type=" + this.props.type + "&id=" + this.props.id}>
+			//<NavLink to={"/graph?type=" + this.props.type + "&id=" + this.props.id}>
+			<NavLink to={"/graphs"}>
 			<div class="searchResult">
 				<img src={this.props.profilePic} class="resultPic"/>
 				<div class="resultTextArea">
@@ -32,13 +33,13 @@ export class SearchBar extends React.Component {
 	*/
 	constructor(props){
 		super(props);
-		this.state = {	showResults: false, 
+		this.state = {	showResults: false,
 						infoToDisplay: [],
 						searchString: ""
 					 };
 	}
-	
-	
+
+
 	/*	Returns an array of objects with the following properties:
 			pic 		The picture to be displayed with the result
 			name 		The name that will be displayed in the results box
@@ -50,12 +51,12 @@ export class SearchBar extends React.Component {
 	*/
 	getUsableData = (jsonObject) => {
 		var usableData = [];
-		
+
 		//Go through all of the users
 		for (var i = 0; i < jsonObject.users.length; i++) {
 			if(!jsonObject.users[i].user.is_private){
 				usableData.push({
-					pic: jsonObject.users[i].user.profile_pic_url, 
+					pic: jsonObject.users[i].user.profile_pic_url,
 					name: jsonObject.users[i].user.username,
 					id: jsonObject.users[i].user.pk,
 					position: jsonObject.users[i].position,
@@ -68,7 +69,7 @@ export class SearchBar extends React.Component {
 		//Go through all of the hashtags
 		for (var i = 0; i < jsonObject.hashtags.length; i++) {
 			usableData.push({
-				pic: hashtagIcon, 
+				pic: hashtagIcon,
 				name: "#" + jsonObject.hashtags[i].hashtag.name,
 				id: jsonObject.hashtags[i].hashtag.id,
 				position: jsonObject.hashtags[i].position,
@@ -79,7 +80,7 @@ export class SearchBar extends React.Component {
 		//Go through all of the places
 		for (var i = 0; i < jsonObject.places.length; i++) {
 			usableData.push({
-				pic: locationIcon, 
+				pic: locationIcon,
 				name: jsonObject.places[i].place.title,
 				id: jsonObject.places[i].place.location.pk,
 				position: jsonObject.places[i].position,
@@ -87,51 +88,51 @@ export class SearchBar extends React.Component {
 				secondText: jsonObject.places[i].place.subtitle
 			});
 		}
-		
+
 		this.sortByPosition(usableData)
 		console.log(usableData);
 		return usableData;
 	}
-	
-	
+
+
 	/*	Given an array of objects that all have a "position" property, the
 		array is modified to be sorted so that objects with the lowest
 		position value are at the beginning and ones with the highest
-		position value are at the end. 
+		position value are at the end.
 	*/
 	sortByPosition = (arrayOfObjects) => {
 		arrayOfObjects.sort(function( obj1, obj2){
 			return obj1.position - obj2.position;
 		})
 	}
-	
-	
-	
+
+
+
 	/*	Checks to see if the response from the request is ready to
 		be used.
 	*/
 	isValidHttpResponse = (request) => {
 		return request.readyState == 4 && request.status == 200;
 	}
-	
-	
+
+
 	/* 	Returns the correct URL to get the results from Instagram
 		based on the given string.
 	*/
 	buildSourceUrl = (searchString) => {
 		var url = "https://www.instagram.com/web/search/topsearch/?context=blended&query=";
-		
+
 		if (searchString.charAt(0) == "#") {
 			url += "%23" + searchString.substring(1);
 		} else {
 			url += searchString;
 		}
-		
+
 		return url;
 	}
-	
-	
-	
+
+
+
 	/*	The method will query Instagram for search results based on
 		this.state.searchString. The id, name, and picture of each user
 		will be stored in state.infoToDisplay. The search results
@@ -142,32 +143,32 @@ export class SearchBar extends React.Component {
 		var results = {};
 		var request = new XMLHttpRequest();
 		var url = this.buildSourceUrl(this.state.searchString);
-		
+
 		request.open("GET", url, true);
 		request.send();
-		
+
 		//Parse the JSON once it is received
 		request.onreadystatechange = () => {
 			if (this.isValidHttpResponse(request)) {
 				results = JSON.parse(request.responseText);
 				this.setState(
 					{
-						showResults:true, 
+						showResults:true,
 						infoToDisplay: this.getUsableData(results)
 					}
 				);
-			} 
+			}
 		}
 	}
-	
-	
+
+
 	handleChange = event => {
 		const target = event.target;
 		const name = target.name
 		this.setState({[name]: event.target.value});
 	}
-	
-	
+
+
 	/*	Given an array of objects that contain profilePic and username
 		data members, the method will return a div filled with SearchResult
 		components usisng those pictures and names in the order that they
@@ -185,8 +186,8 @@ export class SearchBar extends React.Component {
 							});
 		return <div>{listOfResults}</div>;
 	}
-	
-	
+
+
 	/*	Returns the HTML for all of the SearchResults inside of
 		a div. If state.infoToDisplay is empty, there will be
 		no SearchResults produced.
@@ -204,9 +205,9 @@ export class SearchBar extends React.Component {
 			)
 		}
 	}
-	
-	
-	
+
+
+
 	render() {
 		console.log("Rerendering everything");
 		var initialText="Search for a user, location, or hashtag";
@@ -214,7 +215,7 @@ export class SearchBar extends React.Component {
 			<div class="searchBarWidget">
 				<form onSubmit={(event) => this.handleSearch(event)}>
 					<div class="searchBar">
-						<input 
+						<input
 							class="textArea"
 							type="text"
 							placeholder={initialText}
@@ -228,9 +229,7 @@ export class SearchBar extends React.Component {
 				</form>
 				{this.renderResults()}
 			</div>
-			
+
 		)
   }
 }
-
-

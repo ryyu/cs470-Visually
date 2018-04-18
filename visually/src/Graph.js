@@ -38,11 +38,11 @@ export class BarChart extends React.Component {
     componentDidMount() {
         this.createBarChart()
     }
-
+/*
     componentDidUpdate() {
         this.createBarChart()
     }
-/*
+
 
     createBarChart(props) {
 
@@ -193,6 +193,6 @@ export class BarChart extends React.Component {
     }
 
     render() {
-        return <div className="graphResult"> </div>;    
+        return <div className="graphResult"> </div>;
     }
 }
