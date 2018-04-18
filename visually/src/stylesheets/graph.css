@@ -1,3 +1,7 @@
+.graphWrapper {
+  margin-top:20vh;
+}
+
 .graphResult {
   font: 10px sans-serif;
   overflow-x: scroll;
@@ -7,9 +11,9 @@
 }
 
 .bar {
-  fill: #FFFFFF;
+  fill: #70d8ff;
 }
 
-.text {
+h1 {
   color: black;
 }

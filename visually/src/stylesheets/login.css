@@ -34,10 +34,6 @@
 
 */
 
-body {
-  background-color: #70d8ff;
-}
-
 h1 {
   font-family: 'PT sans', sans-serif;
   color: #70d8ff;
@@ -46,9 +42,10 @@ h1 {
 
 .login-form {
   width: 360px;
-  padding: 8% 0 0;
+  padding: 8% 0;
   margin: auto;
-  height: 100vh;
+  max-height: 100vh;
+
 /*  background: linear-gradient(to bottom, rgba(146, 135, 187, 0.8) 0%, rgba(0,0,0,0.6) 100%); */
 }
 .form {

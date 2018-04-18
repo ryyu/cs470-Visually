@@ -2,6 +2,7 @@ import * as React from 'react';
 import './stylesheets/graph.css';
 
 import * as d3 from "d3";
+import * as qs from "query-string"
 import locationIcon from './assets/locationIcon.svg';
 import hashtagIcon from './assets/hashtagIcon.svg';
 import {NavLink} from 'react-router-dom';
@@ -12,12 +13,14 @@ export class Graph extends React.Component {
         super(props);
       }
 
-    render() {
-        const filteredAppdata = [30, 86, 168, 281, 303, 365];
 
+
+    render() {
+        var name = qs.parse(this.props.location.search).text;
         return (
             <div className="graphWrapper">
-                <BarChart data={filteredAppdata} width={500} height={500}/>
+                <BarChart width={500} height={500}/>
+                <h1>Overview for: {name} </h1>
             </div>
         )
     }

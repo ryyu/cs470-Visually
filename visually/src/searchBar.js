@@ -7,8 +7,8 @@ import {NavLink} from 'react-router-dom';
 class SearchResult extends React.Component {
 	render() {
 		return(
-			//<NavLink to={"/graph?type=" + this.props.type + "&id=" + this.props.id}>
-			<NavLink to={"/graphs"}>
+			<NavLink to={"/graphs?id=" + this.props.id + "&text=" + this.props.mainText}>
+
 			<div class="searchResult">
 				<img src={this.props.profilePic} class="resultPic"/>
 				<div class="resultTextArea">
