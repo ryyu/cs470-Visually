@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/login.css';
+import LoginConnection from './loginConnection.js';
+
 
 
 class LoginBox extends Component {
@@ -14,20 +16,14 @@ class LoginBox extends Component {
 }
 
 class LoginForms extends Component {
-  /*
+  
   constructor(props) {
     super(props);
-    this.state = {value:''};
+	this.loginConn = new LoginConnection();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  */
-/*
-  handleChange(event) {
 
   }
-*/
+
   state = {
     username: '',
     password: ''
@@ -40,7 +36,8 @@ class LoginForms extends Component {
   }
 
   handleSubmit = event => {
-    alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
+    //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
+	this.loginConn.login(this.state.username, this.state.password);
     event.preventDefault();
   }
 
