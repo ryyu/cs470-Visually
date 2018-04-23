@@ -20,16 +20,20 @@ class App extends Component {
 				<div className="App">
 					<HeaderBar></HeaderBar>
 					<div className="content">
-						<Route exact path="/search" render={() =>
-								!isLoggedIn() ?
-									<Redirect to="/login"/>
-								:
-									<Search/>
-							}
-						/>
 						<Route exact path="/" component={Login}/>
-						<Route exact path="/login" component={Login}/>
 						<Route exact path="/Graphs" component={Graph}/>
+						<Route exact path="/search" render={() =>
+							!isLoggedIn() ?
+								<Redirect to="/login"/>
+							:
+								<Search/>
+						}/>
+						<Route exact path="/login" render={() =>
+							!isLoggedIn() ?
+								<Login/>
+							:
+								<Search/>
+						}/>
 						{/* Any new pages that can be linked to should go in here*/}
 					</div>
 				</div>
