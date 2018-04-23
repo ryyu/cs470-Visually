@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/login.css';
-import LoginConnection from './loginConnection.js';
+import {login} from './loginConnection.js';
 
 
 
@@ -16,13 +16,6 @@ class LoginBox extends Component {
 }
 
 class LoginForms extends Component {
-  
-  constructor(props) {
-    super(props);
-	this.loginConn = new LoginConnection();
-
-
-  }
 
   state = {
     username: '',
@@ -37,7 +30,7 @@ class LoginForms extends Component {
 
   handleSubmit = event => {
     //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
-	this.loginConn.login(this.state.username, this.state.password);
+	login(this.state.username, this.state.password);
     event.preventDefault();
   }
 
