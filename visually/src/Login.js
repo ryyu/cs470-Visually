@@ -31,6 +31,7 @@ class LoginForms extends Component {
 
   handleSubmit = event => {
     //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
+	login(this.state.username, this.state.password);
     event.preventDefault();
   }
 
