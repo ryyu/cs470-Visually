@@ -5,6 +5,12 @@ const login = (username, password) => {
 	document.cookie = "sessId=" + "1234";
 	return checkLogin2(username, password, setCookies);
 }
+
+
+const logout = () => {
+	document.cookie = "acct=; expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+	document.cookie = "sessId=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+}
 	
 		
 const isLoggedIn = () => {
@@ -53,4 +59,4 @@ const getCookie = (cname) => {
 	return "";
 }
 
-export {login, isLoggedIn, checkLogin2, setCookies, getCookie};
+export {login, logout, isLoggedIn, checkLogin2, setCookies, getCookie};

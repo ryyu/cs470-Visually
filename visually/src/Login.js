@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/login.css';
 import {login} from './loginConnection.js';
+import {Redirect} from 'react-router-dom';
 
 
 
@@ -30,7 +31,6 @@ class LoginForms extends Component {
 
   handleSubmit = event => {
     //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
-	login(this.state.username, this.state.password);
     event.preventDefault();
   }
 
