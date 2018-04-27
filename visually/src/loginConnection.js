@@ -24,17 +24,34 @@ const isLoggedIn = () => {
 }
 	
 	
-const checkLogin2 = (username, password, callback) => {
-	//Right now this is hardcoded to just always let the user login
-	return true;
-	var url = "http://localhost:4000/users/insert/checkCredentials?user_name=jt&user_password=password";
-	return fetch(url, {
-		method: 'GET', // *GET, POST, PUT, DELETE, etc.
-		mode: 'no-cors', // no-cors, cors, *same-origin
-		headers: {
-		  'Access-Control-Allow-Origin': '*',
-		},
-	  });
+const checkLogin2 = (username, password) => {
+
+	var url = "http://localhost:4000/users/insert/checkCredentials?user_name=" + username + "&user_password=" + password;
+	fetch(url, {mode: 'cors'})
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return false;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+		return true;
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+	return false;
+  });
+  console.log("We hit the bottom");
+}
+
+const checkLoginFetch = (username, password, url) => {
+	return fetch(url, {mode: 'cors'});
 }
 	
 const setCookies = (responseText) => {

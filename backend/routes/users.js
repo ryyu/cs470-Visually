@@ -62,6 +62,7 @@ router.get('/insert/checkCredentials', function(req, res) {
             }
             else {
                 if (result.length != 0) {
+					res.status(200);
                     res.send(result);
                 }
                 else {

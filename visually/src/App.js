@@ -7,7 +7,7 @@ import {HeaderBar} from './headerBar.js';
 
 import {Search} from './pages/search.js';
 import {Login} from './pages/login.js';
-import {isLoggedIn} from './loginConnection.js';
+import {isLoggedIn, checkLogin2} from './loginConnection.js';
 
 import {Graph} from './Graph.js';
 
@@ -15,6 +15,7 @@ class App extends Component {
 
 	
 	render() {
+		
 		return (
 			<BrowserRouter>
 				<div className="App">
