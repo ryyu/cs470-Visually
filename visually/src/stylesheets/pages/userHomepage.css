@@ -21,6 +21,7 @@
 	float: left;
 }
 
+/*********RECENT POSTS STYLES*********/
 #topRecentPosts{
 	width: 800px;
 	background-color: white;
@@ -32,11 +33,15 @@
 }
 
 .sectionTitleArea{
-	width: 100%;
+	width: 95%;
 	height: 30px;
 	float: left;
 	background-color: white;
-	font-size: 20px;
+	font-size: 16px;
+	padding-left: 5px;
+	display: flex;
+    align-items: center;
+
 }
 
 .recentPost{
@@ -45,7 +50,13 @@
 	float: left;
 	background-size: cover;
 	position: relative;
-	margin: 5px;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
 }
 
 .recentPostInfoBar{
@@ -55,8 +66,35 @@
 	height: 25px;
 	display: flex;
     align-items: center;
-	background-color: rgb(12, 49, 64, .8);
+	background-color: rgb(12, 49, 64);
 	color: white;
 	font-size: 10pt;
 	
+}
+
+/*********PAGE TITLE STYLES*********/
+#pageTitle{
+	padding: 10px;
+	display: block;
+	border-bottom: 1px solid grey;
+}
+
+.AccountNameText{
+	font-size: 24px;
+}
+
+#profilePic{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	display: block;
+	margin: auto;
+	border: 5px solid rgb(12, 49, 64);
+}
+
+#pageTitleDivider{
+	width: 160px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: rgb(12, 49, 64, .8);
 }

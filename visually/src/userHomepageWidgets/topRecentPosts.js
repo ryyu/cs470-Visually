@@ -52,7 +52,7 @@ export class TopRecentPosts extends Component {
 	renderTopRecentPosts(){
 		if(this.props.recentPostsJson === "" || this.props.recentPostsJson==undefined) {
 			return (
-				<div> Some boring text </div>
+				<div> </div>
 			)
 		}
 		

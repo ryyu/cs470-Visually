@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../stylesheets/pages/userHomepage.css';
 import {TopRecentPosts} from '../userHomepageWidgets/topRecentPosts.js';
+import {PageTitle} from '../userHomepageWidgets/pageTitle.js';
 
 export class UserHomepage extends Component {
 	
@@ -9,7 +10,7 @@ export class UserHomepage extends Component {
 		this.state = {	
 			topRecentPostsAvailable: ""
 		};
-		this.getInfoFromInstagram("therock");
+		this.getInfoFromInstagram("sonomastateuniversity");
 	}
 	
 	
@@ -36,7 +37,11 @@ export class UserHomepage extends Component {
 				results = JSON.parse(results.match("window._sharedData = (.*);<\/script>")[1]);
 				this.setState(
 					{
-						recentPostsJson: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
+						recentPostsJson: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"],
+						username: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["username"],
+						profilePic: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["profile_pic_url"],
+						followers: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_followed_by"]["count"],
+						following: results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_follow"]["count"]
 					}
 				);
 				console.log("What we got");
@@ -51,6 +56,12 @@ export class UserHomepage extends Component {
 		return (
 			<div id="userPageContainer">
 				<div id="leftColumn">
+					<PageTitle
+						username={this.state.username}
+						profilePic={this.state.profilePic}
+						followers={this.state.followers}
+						following={this.state.following}
+					/>
 				</div>
 				<div id="rightColumn">
 					<TopRecentPosts recentPostsJson={this.state.recentPostsJson}/>
