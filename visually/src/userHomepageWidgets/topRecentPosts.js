@@ -27,9 +27,11 @@ class RecentPost extends Component {
 		var numComments = this.formatNumber(this.props.numComments);
 		
 		return (
+			<a target="_blank" href={"https://www.instagram.com/p/" + this.props.shortcode}>
 			<div class="recentPost" 
 				 style={{backgroundImage: 'url(' + this.props.imageSource + ')'}}
 			>
+
 			<div class="recentPostInfoBar">
 				<img src={heartIcon} height="20px"></img>
 				&nbsp; {numLikes} &nbsp;
@@ -38,6 +40,7 @@ class RecentPost extends Component {
 			</div>
 			
 			</div>
+			</a>
 		)
 	}
 }
@@ -62,6 +65,7 @@ export class TopRecentPosts extends Component {
 				imageSource={this.props.recentPostsJson[i]["node"]["thumbnail_src"]}
 				numLikes={this.props.recentPostsJson[i]["node"]["edge_liked_by"]["count"]}
 				numComments={this.props.recentPostsJson[i]["node"]["edge_media_to_comment"]["count"]}
+				shortcode={this.props.recentPostsJson[i]["node"]["shortcode"]}
 			/>)
 		}
 		
