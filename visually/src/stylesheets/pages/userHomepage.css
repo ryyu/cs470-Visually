@@ -1,0 +1,22 @@
+#userPageContainer{
+	width: 1200px;
+	background-color: white;
+	height: 600px;
+	display: block;
+	margin: auto;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#leftColumn{
+	width: 400px;
+	background-color: red;
+	height: 600px;
+	float: left;
+}
+
+#rightColumn{
+	width: 800px;
+	background-color: green;
+	height: 600px;
+	float: left;
+}

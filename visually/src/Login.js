@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './stylesheets/login.css';
+import {login, isLoggedIn} from './loginConnection.js';
+import {Redirect} from 'react-router-dom';
+
 
 
 class LoginBox extends Component {
@@ -14,20 +17,7 @@ class LoginBox extends Component {
 }
 
 class LoginForms extends Component {
-  /*
-  constructor(props) {
-    super(props);
-    this.state = {value:''};
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  */
-/*
-  handleChange(event) {
-
-  }
-*/
   state = {
     username: '',
     password: ''
@@ -40,7 +30,9 @@ class LoginForms extends Component {
   }
 
   handleSubmit = event => {
-    alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
+    //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
+	login(this.state.username, this.state.password);
+	window.location.reload();
     event.preventDefault();
   }
 
