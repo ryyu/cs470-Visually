@@ -98,3 +98,17 @@
 	margin-bottom: 10px;
 	color: rgb(12, 49, 64, .8);
 }
+
+/*********RECENT POSTS GRAPH STYLES*********/
+#recentPostGraphWidget{
+	width: 800px;
+	float: left;
+	border-left: 1px solid grey;
+}
+
+.chart {
+	display: block;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}

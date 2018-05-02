@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../stylesheets/pages/userHomepage.css';
 import {TopRecentPosts} from '../userHomepageWidgets/topRecentPosts.js';
 import {PageTitle} from '../userHomepageWidgets/pageTitle.js';
+import {SampleGraph} from '../userHomepageWidgets/recentPostsGraph.js';
 
 export class UserHomepage extends Component {
 	
@@ -10,7 +11,7 @@ export class UserHomepage extends Component {
 		this.state = {	
 			topRecentPostsAvailable: ""
 		};
-		this.getInfoFromInstagram("sonomastateuniversity");
+		this.getInfoFromInstagram("seawolfliving");
 	}
 	
 	
@@ -46,6 +47,7 @@ export class UserHomepage extends Component {
 				);
 				console.log("What we got");
 				console.log(this.state.recentPostsJson);
+				console.log(results["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]);
 				console.log(results);
 			}
 		}
@@ -65,6 +67,7 @@ export class UserHomepage extends Component {
 				</div>
 				<div id="rightColumn">
 					<TopRecentPosts recentPostsJson={this.state.recentPostsJson}/>
+					<SampleGraph recentPostsJson={this.state.recentPostsJson} />
 				</div>
 			</div>
 		);
