@@ -77,7 +77,7 @@ export class TopRecentPosts extends Component {
 		return (
 			<div id="topRecentPosts">
 				<div class="sectionTitleArea">
-					Recent Posts Summary
+					Recent posts summary
 				</div>
 				{this.renderTopRecentPosts()}
 			</div>

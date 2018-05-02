@@ -102,7 +102,7 @@ export class SampleGraph extends React.Component {
 						colors: ["#70d8ff"]
 					}}
 					graph_id="ScatterChart"
-					width="750px"
+					width="780px"
 					height="150px"
 				/>
 			</div>
