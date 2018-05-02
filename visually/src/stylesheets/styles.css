@@ -9,3 +9,9 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
+h1 {
+  font-family: 'PT sans', sans-serif;
+  color: #70d8ff;
+  margin: 0;
+}

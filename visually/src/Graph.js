@@ -13,14 +13,18 @@ export class Graph extends React.Component {
         super(props);
       }
 
-
-
     render() {
         var name = qs.parse(this.props.location.search).text;
+        var profilePic = qs.parse(this.props.location.search).src;
+        var secondText = qs.parse(this.props.location.search).secText;
+        console.log("secondText", secondText);
         return (
             <div className="graphWrapper">
-                <BarChart width={500} height={500}/>
                 <h1>Overview for: {name} </h1>
+                <img src={profilePic}/>
+                <BarChart width={500} height={500} range={secondText}/>
+                <br/>
+                <LineChart width={500} height={500} />
             </div>
         )
     }
@@ -35,7 +39,6 @@ export class BarChart extends React.Component {
     constructor(props){
         super(props)
         this.createBarChart = this.createBarChart.bind(this)
-
     }
 
     componentDidMount() {
@@ -69,6 +72,14 @@ export class BarChart extends React.Component {
 */
 
   generateData = () => {
+    var r = this.props.range;
+    var range = parseInt(r); // maybe need to multiply by some factor
+                             // 'm' => * 1,000,000 if js can handle numbers that big
+    if(range === NaN || range === 0) {
+      range = 100;
+    }
+
+    console.log("range", range);
     var times = [
     '00:00',
     '01:00',
@@ -97,12 +108,14 @@ export class BarChart extends React.Component {
 
     var a = [];
     for(var i = 0; i < 24; i++) {
-        var rand = Math.floor(Math.random() * 100);
+        var rand = Math.floor(Math.random() * range);
         a.push({
           likes: rand,
           times: times[i]
         });
     }
+
+
     return a;
   }
 
@@ -198,4 +211,107 @@ export class BarChart extends React.Component {
     render() {
         return <div className="graphResult"> </div>;
     }
+}
+
+export class LineChart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.createLineChart = this.createLineChart.bind(this);
+  }
+
+  componentDidMount() {
+    this.createLineChart();
+  }
+
+  createLineChart(props) {
+/*
+    var margin = {top: 5, right: 5, bottom: 50, left: 50};
+    // here, we want the full chart to be 700x200, so we determine
+    // the width and height by subtracting the margins from those values
+    var fullWidth = 1400;
+    var fullHeight = 200;
+    // the width and height values will be used in the ranges of our scales
+    var width = fullWidth - margin.right - margin.left;
+    var height = fullHeight - margin.top - margin.bottom;
+    var svg = d3.select('.graphResult').append('svg')
+    .attr('width', fullWidth)
+    .attr('height', fullHeight)
+    // this g is where the bar chart will be drawn
+    .append('g')
+    // translate it to leave room for the left and top margins
+    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+*/
+    var svg = d3.select(".lineResult").append("svg"),
+        margin = {top: 5, right: 5, bottom: 50, left: 50},
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    /* Not needed, probably
+    var fullWidth = 1400;
+    var fullHeight = 200;
+    var svg = d3.select("lineResult").append("svg"),
+        margin = {top: 5, right: 5, bottom: 50, left: 50},
+        width = fullWidth - margin.left - margin.right,
+        height = fullHeight - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    */
+    var parseTime = d3.timeParse("%d-%b-%y");
+
+    var x = d3.scaleTime()
+        .rangeRound([0, width]);
+
+    var y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    var line = d3.line()
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.close); });
+
+    console.log("reading data");
+    d3.tsv("data.tsv", function(data) {
+      console.log(data);
+    });
+
+    d3.tsv("data.tsv", function(d) {
+      d.date = parseTime(d.date);
+      d.close = +d.close;
+      return d;
+    }, function(error, data) {
+      if (error) throw error;
+
+      x.domain(d3.extent(data, function(d) { return d.date; }));
+      y.domain(d3.extent(data, function(d) { return d.close; }));
+
+      g.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+        .select(".domain")
+          .remove();
+
+      g.append("g")
+          .call(d3.axisLeft(y))
+        .append("text")
+          .attr("fill", "#000")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", "0.71em")
+          .attr("text-anchor", "end")
+          .text("Price ($)");
+
+      g.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", "steelblue")
+          .attr("stroke-linejoin", "round")
+          .attr("stroke-linecap", "round")
+          .attr("stroke-width", 1.5)
+          .attr("d", line);
+    });
+  }
+
+  render() {
+      return <div className="lineResult"> </div>;
+  }
 }
