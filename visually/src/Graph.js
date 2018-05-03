@@ -7,8 +7,9 @@ import locationIcon from './assets/locationIcon.svg';
 import hashtagIcon from './assets/hashtagIcon.svg';
 import {NavLink} from 'react-router-dom';
 import {Chart} from 'react-google-charts';
-import Dropdown from 'react-dropdown'
-import 'react-dropdown/style.css'
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+import {JTGraph} from './jt_graph.js';
 
 export class Graph extends React.Component {
 
@@ -31,6 +32,9 @@ export class Graph extends React.Component {
       if (type === 'LikesTimeBC') {
         return <BarChart width={500} height={500} range={text}/>
       }
+      else if (type === 'htvslikes') {
+        return <JTGraph />
+      }
       return <LineChart width={500} height={500} />
     }
 
@@ -39,7 +43,7 @@ export class Graph extends React.Component {
         var profilePic = qs.parse(this.props.location.search).src;
         var secondText = qs.parse(this.props.location.search).secText;
         console.log("secondText", secondText);
-        const options = ['LikesTimeBC', 'PostFrequencyLC'];
+        const options = ['LikesTimeBC', 'PostFrequencyLC', 'htvslikes'];
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>

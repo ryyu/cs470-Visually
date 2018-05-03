@@ -2,9 +2,9 @@ import React from 'react';
 import {Chart, Datatable} from 'react-google-charts';
 
 export class JTGraph extends React.Component {
-	
+
 	addData = () =>{
-	
+
 	let newvals = [];
 	for (let i = 0; i < 11; i++){
 			newvals.push([i, Math.floor(Math.random() * 100)]);
@@ -49,6 +49,6 @@ export class JTGraph extends React.Component {
                     />
                     </div>
                     </div>
-            )   
+            )
 		}
 	}
