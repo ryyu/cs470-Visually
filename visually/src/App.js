@@ -10,6 +10,8 @@ import {Login} from './pages/login.js';
 
 import {Graph} from './Graph.js';
 
+import {SignUpBox} from './SignUp.js';
+
 class App extends Component {
   render() {
     return (
@@ -22,6 +24,7 @@ class App extends Component {
 					<Route exact path="/search" component={Search}/>
 					{/* Any new pages that can be linked to should go in here*/}
           <Route exact path="/Graphs" component={Graph}/>
+          <Route exact path="/signup" component={SignUpBox}/>
 				</div>
 			</div>
 	  	</BrowserRouter>
