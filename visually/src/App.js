@@ -9,12 +9,9 @@ import {Search} from './pages/search.js';
 import {Login} from './pages/login.js';
 import {UserHomepage} from './pages/userHomepage.js';
 import {isLoggedIn, checkLogin2} from './loginConnection.js';
-
 import {Graph} from './Graph.js';
 
 class App extends Component {
-
-	
 	render() {
 		
 		return (

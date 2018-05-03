@@ -42,7 +42,7 @@ export class HeaderBar extends React.Component {
 				<img src={logo} height="50px"></img>
 			</div>
 			<div class="catchPhraseArea">
-				Some sort of catchy phrase can go here
+			Where we visualize your data
 			</div>
 		</div>
 	)
