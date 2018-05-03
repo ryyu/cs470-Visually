@@ -1,0 +1,18 @@
+.graphWrapper {
+}
+
+.graphResult {
+  font: 10px sans-serif;
+  overflow-x: scroll;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+}
+
+.bar {
+  fill: #70d8ff;
+}
+
+h1 {
+  color: black;
+}

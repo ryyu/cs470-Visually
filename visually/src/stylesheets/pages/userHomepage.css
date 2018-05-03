@@ -1,0 +1,136 @@
+#userPageContainer{
+	width: 1202px;
+	background-color: white;
+	height: 600px;
+	display: block;
+	margin: auto;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#leftColumn{
+	width: 400px;
+	background-color: white;
+	height: 600px;
+	float: left;
+}
+
+#rightColumn{
+	width: 800px;
+	background-color: white;
+	height: 600px;
+	float: left;
+}
+
+/*********RECENT POSTS STYLES*********/
+#topRecentPosts{
+	width: 800px;
+	background-color: white;
+	height: 400px;
+	float: left;
+	text-align: left;
+	border-left: 1px solid grey;
+	border-bottom: 1px solid grey;
+}
+
+.sectionTitleArea{
+	width: 95%;
+	height: 30px;
+	float: left;
+	background-color: white;
+	font-size: 16px;
+	padding-left: 5px;
+	display: flex;
+    align-items: center;
+
+}
+
+.recentPost{
+	width: 150px;
+	height: 150px;
+	float: left;
+	background-size: cover;
+	position: relative;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
+
+.recentPostInfoBar{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 25px;
+	display: flex;
+    align-items: center;
+	background-color: rgb(12, 49, 64);
+	color: white;
+	font-size: 10pt;
+	
+}
+
+/*********PAGE TITLE STYLES*********/
+#pageTitle{
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 30px;
+	display: block;
+	border-bottom: 1px solid grey;
+}
+
+.AccountNameText{
+	font-size: 24px;
+}
+
+#profilePic{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	display: block;
+	margin: auto;
+	border: 5px solid rgb(12, 49, 64);
+}
+
+#pageTitleDivider{
+	width: 160px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: rgb(12, 49, 64, .8);
+}
+
+/*********RECENT POSTS GRAPH STYLES*********/
+#recentPostGraphWidget{
+	width: 800px;
+	float: left;
+	border-left: 1px solid grey;
+}
+
+.chart {
+	display: block;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+/********CHANGE IN FOLLOWERS STYLES********/
+.changeNumber{
+	font-size: 98px;
+	display: block;
+}
+
+.greenFont{
+	color: #26A65B;
+}
+
+.numberArea{
+	display: block;
+	width: 100%;
+	float: left;
+	border: 1px solid #d2d7dd;
+	padding-top: 10px;
+}
+

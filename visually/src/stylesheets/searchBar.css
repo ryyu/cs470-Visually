@@ -13,7 +13,7 @@
 	height: 44px;
 	width: 500px;
 	padding: 0px;
-	
+
 }
 
 .searchBar .textArea{
@@ -32,11 +32,11 @@
 }
 
 input.searchBtn{
-    background:url(../assets/searchBlack.svg);
-    background-repeat: no-repeat;
+  background:url(../assets/searchBlack.svg);
+  background-repeat: no-repeat;
 	background-size: 24px;
 	background-position: center;
-    width:44px;
+  width:44px;
 	height: 44px;
 	margin: 0px;
 	padding: 0px;
@@ -50,7 +50,7 @@ input.searchBtn{
 	max-height: 300px;
 	overflow-y: scroll;
 	border: 1px solid black;
-	
+
 	-webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
