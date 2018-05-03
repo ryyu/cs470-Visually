@@ -74,7 +74,10 @@
 
 /*********PAGE TITLE STYLES*********/
 #pageTitle{
-	padding: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 30px;
 	display: block;
 	border-bottom: 1px solid grey;
 }
@@ -112,3 +115,22 @@
 	padding: 0px;
 	margin: 0px;
 }
+
+/********CHANGE IN FOLLOWERS STYLES********/
+.changeNumber{
+	font-size: 98px;
+	display: block;
+}
+
+.greenFont{
+	color: #26A65B;
+}
+
+.numberArea{
+	display: block;
+	width: 100%;
+	float: left;
+	border: 1px solid #d2d7dd;
+	padding-top: 10px;
+}
+

@@ -3,6 +3,7 @@ import '../stylesheets/pages/userHomepage.css';
 import {TopRecentPosts} from '../userHomepageWidgets/topRecentPosts.js';
 import {PageTitle} from '../userHomepageWidgets/pageTitle.js';
 import {SampleGraph} from '../userHomepageWidgets/recentPostsGraph.js';
+import {ChangeInFollowers} from '../userHomepageWidgets/changeInFollowers.js';
 
 export class UserHomepage extends Component {
 	
@@ -63,6 +64,10 @@ export class UserHomepage extends Component {
 						profilePic={this.state.profilePic}
 						followers={this.state.followers}
 						following={this.state.following}
+					/>
+					<ChangeInFollowers
+						followers={this.state.followers}
+						numDays={7}
 					/>
 				</div>
 				<div id="rightColumn">
