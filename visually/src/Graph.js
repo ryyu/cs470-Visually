@@ -10,6 +10,7 @@ import {Chart} from 'react-google-charts';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {JTGraph} from './jt_graph.js';
+import {ExampleChart} from './ExampleChart.js'
 
 export class Graph extends React.Component {
 
@@ -35,6 +36,9 @@ export class Graph extends React.Component {
       else if (type === 'HashTags vs Likes') {
         return <JTGraph />
       }
+      else if (type === 'Number of Posts Per Month') {
+        return <ExampleChart />
+      }
       return <LineChart width={500} height={500} />
     }
 
@@ -43,7 +47,7 @@ export class Graph extends React.Component {
         var profilePic = qs.parse(this.props.location.search).src;
         var secondText = qs.parse(this.props.location.search).secText;
         console.log("secondText", secondText);
-        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes'];
+        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes', 'Number of Posts Per Month'];
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>
