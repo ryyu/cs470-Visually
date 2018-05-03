@@ -45,10 +45,11 @@ export class JTGraph extends React.Component {
                         colors: ["#70d8ff"]
                     }}
                     graph_id="HorizontalBarChart"
+
                     width="100%"
                     height="100vh"
                     />
                     </div>
             )
 		}
-	}
+}
