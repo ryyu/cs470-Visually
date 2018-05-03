@@ -353,7 +353,7 @@ export class LineChart extends React.Component {
     this.state = {
       options: {
         title: 'Post Frequency for the month of April',
-        hAxis: { title: 'Time'},
+        hAxis: { title: 'Day of the Month'},
         vAxis: { title: 'Number of Posts'}, // minHeight, maxHeight
         legend: 'none',
         colors: ['#70d8ff'],
