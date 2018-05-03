@@ -37,8 +37,8 @@ export class JTGraph extends React.Component {
                     options={{
                     	title: 'How Many Hashtags to Number of Likes',
                         //tooltip: {isHtml: true},
-                        vAxis: { gridlines: {count: 11}, title: "number of hashtags", baselineColor: 'none', 
-                        //gridlineColor: '#70d8ff', 
+                        vAxis: { gridlines: {count: 11}, title: "number of hashtags", baselineColor: 'none',
+                        //gridlineColor: '#70d8ff',
                         textPosition: 'none'},
                         hAxis: {title: "number of likes", bold: false, },
                         bar: {groupWidth: '95%'},
@@ -46,15 +46,10 @@ export class JTGraph extends React.Component {
                         colors: ["#70d8ff"]
                     }}
                     graph_id="HorizontalBarChart"
-                    width="800px"
-                    height="800px"
+                    width="100%"
+                    height="100vh"
                     />
                     </div>
-<<<<<<< HEAD
-                    </div>
             )
-=======
-            )   
->>>>>>> af6b19ea8ec4c38269a3044906ac5428a0f37a90
 		}
 	}

@@ -16,7 +16,7 @@ export class Graph extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          type: 'LikesTimeBC',
+          type: 'Likes vs Time',
         }
       }
 
@@ -29,10 +29,10 @@ export class Graph extends React.Component {
       console.log("rendering graphs")
       const type = this.state.type;
       console.log(text);
-      if (type === 'LikesTimeBC') {
+      if (type === 'Likes vs Time') {
         return <BarChart width={500} height={500} range={text}/>
       }
-      else if (type === 'htvslikes') {
+      else if (type === 'HashTags vs Likes') {
         return <JTGraph />
       }
       return <LineChart width={500} height={500} />
@@ -43,7 +43,7 @@ export class Graph extends React.Component {
         var profilePic = qs.parse(this.props.location.search).src;
         var secondText = qs.parse(this.props.location.search).secText;
         console.log("secondText", secondText);
-        const options = ['LikesTimeBC', 'PostFrequencyLC', 'htvslikes'];
+        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes'];
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>
