@@ -38,7 +38,6 @@ export class JTGraph extends React.Component {
                     	title: 'How Many Hashtags to Number of Likes',
                         //tooltip: {isHtml: true},
                         vAxis: { gridlines: {count: 11}, title: "number of hashtags", baselineColor: 'none',
-                        //gridlineColor: '#70d8ff',
                         textPosition: 'none'},
                         hAxis: {title: "number of likes", bold: false, },
                         bar: {groupWidth: '95%'},
