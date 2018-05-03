@@ -21,7 +21,7 @@ export class JTGraph extends React.Component {
 				{
 					type: 'number',
 					label: 'likes',
-				}
+				},
 			]
 		}
 	}
@@ -29,26 +29,32 @@ export class JTGraph extends React.Component {
 	render() {
 		this.addData();
 		return (
-			<div>
-				<h2> How Many Hashtags To Number Of Likes </h2>
 			<div className={'chart'}>
                 <Chart
                     chartType="BarChart"
                         rows={this.state.rows}
                         columns={this.state.columns}
                     options={{
+                    	title: 'How Many Hashtags to Number of Likes',
                         //tooltip: {isHtml: true},
-                        vAxis: { gridlines: {count: 11},title: "number of #'s"},
-                        hAxis: {title: "number of likes"},
+                        vAxis: { gridlines: {count: 11}, title: "number of hashtags", baselineColor: 'none', 
+                        //gridlineColor: '#70d8ff', 
+                        textPosition: 'none'},
+                        hAxis: {title: "number of likes", bold: false, },
+                        bar: {groupWidth: '95%'},
                         legend: {position: 'none'},
                         colors: ["#70d8ff"]
                     }}
                     graph_id="HorizontalBarChart"
                     width="800px"
-                    height="1400px"
+                    height="800px"
                     />
                     </div>
+<<<<<<< HEAD
                     </div>
             )
+=======
+            )   
+>>>>>>> af6b19ea8ec4c38269a3044906ac5428a0f37a90
 		}
 	}
