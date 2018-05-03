@@ -10,6 +10,7 @@ import {Chart} from 'react-google-charts';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {JTGraph} from './jt_graph.js';
+import {ExampleChart} from './ExampleChart.js'
 
 export class Graph extends React.Component {
 
@@ -35,6 +36,9 @@ export class Graph extends React.Component {
       else if (type === 'HashTags vs Likes') {
         return <JTGraph />
       }
+      else if (type === 'Number of Posts Per Month') {
+        return <ExampleChart />
+      }
       return <LineChart width={500} height={500} />
     }
 
@@ -43,11 +47,11 @@ export class Graph extends React.Component {
         var profilePic = qs.parse(this.props.location.search).src;
         var secondText = qs.parse(this.props.location.search).secText;
         console.log("secondText", secondText);
-        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes'];
+        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes', 'Number of Posts Per Month'];
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>
-                <img src={profilePic}/>
+                <img src={profilePic} class="rounded"/>
                 <br/>
                 {this.RenderGraphs(secondText)}
                 <br/>
@@ -264,6 +268,7 @@ export class BarChart extends React.Component {
   }
 
   generateData = () => {
+    if(this.props.range != undefined || this.props.range != null) {
     let r = this.props.range;
     let parseText = () => {
         let temp = this.props.range;
@@ -319,6 +324,7 @@ export class BarChart extends React.Component {
     console.log(a);
     return a;
   }
+  }
 
   render() {
       var data = this.generateData();
@@ -340,7 +346,6 @@ export class BarChart extends React.Component {
 export class LineChart extends React.Component {
   constructor(props) {
     super(props);
-    this.createLineChart = this.createLineChart.bind(this);
     this.chartEvents = [
       {
         eventName: 'select',
@@ -377,10 +382,6 @@ export class LineChart extends React.Component {
     }
     console.log('a',a);
     return a;
-  }
-
-  createLineChart(props) {
-
   }
 
   render() {

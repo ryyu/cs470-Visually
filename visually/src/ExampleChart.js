@@ -1,7 +1,7 @@
 import { Chart } from 'react-google-charts';
 import React from 'react';
 
-class ExampleChart extends React.Component {
+export class ExampleChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,4 +71,3 @@ class ExampleChart extends React.Component {
     );
   }
 }
-export default ExampleChart;

@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './stylesheets/login.css';
+import './stylesheets/signup.css';
 import {login, isLoggedIn} from './loginConnection.js';
 import {Redirect} from 'react-router-dom';
 import {NavLink} from 'react-router-dom';
 
 
 
-
-class LoginBox extends Component {
+export class SignUpBox extends Component {
   render() {
     return (
-      <div id="login-box">
-        <LoginForms/>
+      <div id="signup-box">
+        <SignUpForms/>
       </div>
     );
   }
 }
 
-class LoginForms extends Component {
+class SignUpForms extends Component {
 
   state = {
+    name: '',
     username: '',
     password: ''
   };
@@ -32,27 +32,24 @@ class LoginForms extends Component {
   }
 
   handleSubmit = event => {
-    //alert('Username submitted: ' + this.state.username + ' Password submitted: ' + this.state.password);
-	login(this.state.username, this.state.password);
-	window.location.reload();
-    event.preventDefault();
+
   }
 
   render() {
     return(
-      <div class="login-form">
+      <div class="signup-form">
         <form class="form" onSubmit={this.handleSubmit}>
-          <h1>Welcome</h1>
+          <h1>Join Visually</h1>
+          <br/>
+          <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+          <br/>
           <input placeholder="Username" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
             <br/>
           <input placeholder="Password" type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
             <br/>
-          <input type="submit" value="Submit" />
-          <p class="message">Not registered? <NavLink to={'/signup'}><a>Create an account</a></NavLink></p>
+            <NavLink to={"/login"}><input type="submit" value="Submit"/></NavLink>
         </form>
       </div>
     );
   }
 }
-
-export default LoginBox

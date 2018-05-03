@@ -11,16 +11,24 @@ import {UserHomepage} from './pages/userHomepage.js';
 import {isLoggedIn, checkLogin2} from './loginConnection.js';
 import {Graph} from './Graph.js';
 
+import {SignUpBox} from './SignUp.js';
+
 class App extends Component {
 	render() {
-		
+
 		return (
 			<BrowserRouter>
 				<div className="App">
 					<HeaderBar></HeaderBar>
 					<div className="content">
-						<Route exact path="/" component={Login}/>
+						<Route exact path="/" render={() =>
+							!isLoggedIn() ?
+								<Redirect to="/login"/>
+							:
+								<UserHomepage/>
+						}/>
 						<Route exact path="/Graphs" component={Graph}/>
+            <Route exact path="/signup" component={SignUpBox}/>
 						<Route exact path="/search" render={() =>
 							!isLoggedIn() ?
 								<Redirect to="/login"/>
@@ -31,11 +39,17 @@ class App extends Component {
 							!isLoggedIn() ?
 								<Login/>
 							:
-								<Search/>
+								<UserHomepage/>
 						}/>
 						<Route exact path="/userHomepage" render={() =>
 							!isLoggedIn() ?
 								<Login/>
+							:
+								<UserHomepage/>
+						}/>
+						<Route exact path="/signup" render={() =>
+							!isLoggedIn() ?
+								<SignUpBox/>
 							:
 								<UserHomepage/>
 						}/>
