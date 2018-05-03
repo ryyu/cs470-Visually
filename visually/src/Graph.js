@@ -7,6 +7,7 @@ import locationIcon from './assets/locationIcon.svg';
 import hashtagIcon from './assets/hashtagIcon.svg';
 import {NavLink} from 'react-router-dom';
 import {Chart} from 'react-google-charts';
+import {JTGraph} from './jt_graph.js';
 
 export class Graph extends React.Component {
 
@@ -26,6 +27,8 @@ export class Graph extends React.Component {
                 <BarChart width={500} height={500} range={secondText}/>
                 <br/>
                 <LineChart width={500} height={500} />
+                <br/>
+                <JTGraph/>
             </div>
         )
     }
