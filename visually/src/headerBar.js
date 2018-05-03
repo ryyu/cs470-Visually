@@ -18,10 +18,8 @@ class HamburgerMenu extends React.Component{
 				}
 					{isLoggedIn() &&
 						<div>
-						<NavLink to="/">Home</NavLink>
+						<NavLink to="/userHomepage">Home</NavLink>
 						<NavLink to="/search">Search</NavLink>
-						<NavLink to="/graphs">Graphs</NavLink>
-						<NavLink to="/settings">Settings</NavLink>
 						<NavLink to="/login" onClick={logout}>Log Out</NavLink>
 						</div>
 					}

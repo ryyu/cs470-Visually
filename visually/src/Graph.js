@@ -47,7 +47,7 @@ export class Graph extends React.Component {
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>
-                <img src={profilePic}/>
+                <img src={profilePic} class="rounded"/>
                 <br/>
                 {this.RenderGraphs(secondText)}
                 <br/>

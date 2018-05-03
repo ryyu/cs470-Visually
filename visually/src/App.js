@@ -21,7 +21,12 @@ class App extends Component {
 				<div className="App">
 					<HeaderBar></HeaderBar>
 					<div className="content">
-						<Route exact path="/" component={Login}/>
+						<Route exact path="/" render={() =>
+							!isLoggedIn() ?
+								<Redirect to="/login"/>
+							:
+								<UserHomepage/>
+						}/>
 						<Route exact path="/Graphs" component={Graph}/>
 						<Route exact path="/search" render={() =>
 							!isLoggedIn() ?
@@ -33,11 +38,17 @@ class App extends Component {
 							!isLoggedIn() ?
 								<Login/>
 							:
-								<Search/>
+								<UserHomepage/>
 						}/>
 						<Route exact path="/userHomepage" render={() =>
 							!isLoggedIn() ?
 								<Login/>
+							:
+								<UserHomepage/>
+						}/>
+						<Route exact path="/signup" render={() =>
+							!isLoggedIn() ?
+								<SignUpBox/>
 							:
 								<UserHomepage/>
 						}/>
