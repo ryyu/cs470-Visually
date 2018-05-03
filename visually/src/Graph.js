@@ -10,7 +10,8 @@ import {Chart} from 'react-google-charts';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import {JTGraph} from './jt_graph.js';
-import {ExampleChart} from './ExampleChart.js'
+import {ExampleChart} from './ExampleChart.js';
+import {ExChart} from './ExChart.js';
 
 export class Graph extends React.Component {
 
@@ -39,6 +40,9 @@ export class Graph extends React.Component {
       else if (type === 'Number of Posts Per Month') {
         return <ExampleChart />
       }
+	  else if (type == "Gender of Followers") {
+		  return <ExChart />
+	  }
       return <LineChart width={500} height={500} />
     }
 
@@ -47,7 +51,7 @@ export class Graph extends React.Component {
         var profilePic = qs.parse(this.props.location.search).src;
         var secondText = qs.parse(this.props.location.search).secText;
         console.log("secondText", secondText);
-        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes', 'Number of Posts Per Month'];
+        const options = ['Likes vs Time', 'Post Frequency', 'HashTags vs Likes', 'Number of Posts Per Month', "Gender of Followers"];
         return (
             <div className="graphWrapper">
                 <h1>Overview for: {name} </h1>
