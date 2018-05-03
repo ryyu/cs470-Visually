@@ -11,9 +11,11 @@ import {UserHomepage} from './pages/userHomepage.js';
 import {isLoggedIn, checkLogin2} from './loginConnection.js';
 import {Graph} from './Graph.js';
 
+import {SignUpBox} from './SignUp.js';
+
 class App extends Component {
 	render() {
-		
+
 		return (
 			<BrowserRouter>
 				<div className="App">
