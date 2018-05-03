@@ -264,6 +264,7 @@ export class BarChart extends React.Component {
   }
 
   generateData = () => {
+    if(this.props.range != undefined || this.props.range != null) {
     let r = this.props.range;
     let parseText = () => {
         let temp = this.props.range;
@@ -319,6 +320,7 @@ export class BarChart extends React.Component {
     console.log(a);
     return a;
   }
+  }
 
   render() {
       var data = this.generateData();
@@ -340,7 +342,6 @@ export class BarChart extends React.Component {
 export class LineChart extends React.Component {
   constructor(props) {
     super(props);
-    this.createLineChart = this.createLineChart.bind(this);
     this.chartEvents = [
       {
         eventName: 'select',
@@ -377,10 +378,6 @@ export class LineChart extends React.Component {
     }
     console.log('a',a);
     return a;
-  }
-
-  createLineChart(props) {
-
   }
 
   render() {

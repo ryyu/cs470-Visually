@@ -2,6 +2,19 @@ import React from 'react';
 import {Chart, Datatable} from 'react-google-charts';
 
 export class JTGraph extends React.Component {
+	constructor(props) {
+		super(props);
+		this.chartEvents = [
+      {
+        eventName: 'select',
+        callback(Chart) {
+            // Returns Chart so you can access props and  the ChartWrapper object from chart.wrapper
+          console.log('Selected ', Chart.chart.getSelection());
+        },
+      },
+    ];
+	}
+
 
 	addData = () =>{
 
@@ -28,6 +41,7 @@ export class JTGraph extends React.Component {
 
 	render() {
 		this.addData();
+
 		return (
 			<div className={'chart'}>
                 <Chart
@@ -48,6 +62,7 @@ export class JTGraph extends React.Component {
 
                     width="100%"
                     height="100vh"
+										chartEvents={this.chartEvents}
                     />
                     </div>
             )

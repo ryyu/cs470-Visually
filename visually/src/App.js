@@ -23,6 +23,7 @@ class App extends Component {
 					<div className="content">
 						<Route exact path="/" component={Login}/>
 						<Route exact path="/Graphs" component={Graph}/>
+            <Route exact path="/signup" component={SignUpBox}/>
 						<Route exact path="/search" render={() =>
 							!isLoggedIn() ?
 								<Redirect to="/login"/>
