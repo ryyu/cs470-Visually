@@ -29,7 +29,7 @@ export class JTGraph extends React.Component {
 	render() {
 		this.addData();
 		return (
-			<div className={'chart'}>
+			<div >
                 <Chart
                     chartType="BarChart"
                         rows={this.state.rows}
